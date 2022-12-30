@@ -31,7 +31,7 @@ module "vpc" {
   }
 }
 
-resource "aws_instance" "web" {
+resource "aws_instance" "blog" {
   ami           = data.aws_ami.app_ami.id
   instance_type = var.instance_type
 
@@ -51,7 +51,6 @@ module "blog_sg" {
 
   ingress_rules       = ["http-80-tcp", "https-443-tcp"]
   ingress_cidr_blocks = ["0.0.0.0/0"]
-
-  egress_rules       = ["all-all"]
-  egress_cidr_blocks = ["0.0.0.0/0"]
+  egress_rules        = ["all-all"]
+  egress_cidr_blocks  = ["0.0.0.0/0"]
 }
